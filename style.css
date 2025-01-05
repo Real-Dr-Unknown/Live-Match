@@ -1,9 +1,12 @@
 .media {
-    width: 75%;
-    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    /* Aligns items vertically at the center */
+    justify-content: space-between;
+    /* Adds space between items */
 }
 
 .media_player {
-    width: 100%;
+    width: 75%;
     aspect-ratio: 16/9;
 }
