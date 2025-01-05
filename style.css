@@ -1,0 +1,9 @@
+.media {
+    width: 75%;
+    aspect-ratio: 16 / 9;
+}
+
+.media_player {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
