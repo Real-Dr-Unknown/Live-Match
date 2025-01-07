@@ -1,12 +1,37 @@
-.media {
-    display: flex;
-    align-items: center;
-    /* Aligns items vertically at the center */
-    justify-content: space-between;
-    /* Adds space between items */
+body {
+    display: flexbox;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    user-select: none;
+    /* Disable text selection */
+    caret-color: transparent;
+    /* Adjust text color for readability */
 }
 
-.media_player {
-    width: 75%;
+
+.media {
+    box-shadow: 0px 10px 90px rgba(255, 255, 255, 0.5);
+    border-radius: 2%;
+    margin-top: 3%;
+    margin-left: 5%;
+    width: 55%;
     aspect-ratio: 16/9;
+}
+
+.title {
+    font: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5.5%;
+    margin-top: 0.5%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    /* Ensure it sits above the iframe */
 }
