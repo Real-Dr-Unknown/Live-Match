@@ -1,21 +1,19 @@
-// Define the YouTube video ID (replace with your actual video ID)
-const videoId = "6YLl-_0XIBc"; // Replace with your YouTube live video ID
+const videoId = "iDpOPCRN2FM";
 
-// Create the iframe element
 const iframe = document.createElement("iframe");
 iframe.id = "YTPlayer"
-iframe.src = `https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0&autoplay=1&controls=0&showinfo=0&enablejsapi=1`;
+iframe.src = `https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0&autoplay=0&controls=0&showinfo=0&enablejsapi=1`;
 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
 iframe.style.aspectRatio = 16 / 9;
 iframe.style.width = "100%";
 iframe.frameBorder = "0";
 iframe.style.borderRadius = "2%";
 
-// Select the container div
 const mediaDiv = document.querySelector(".media");
 const dess = document.querySelector(".descp");
 const paragraph = document.querySelector(".para");
 const title = document.querySelector(".title");
+const controls = document.querySelector(".controls");
 
 divProp = mediaDiv.getBoundingClientRect();
 paraProp = paragraph.getBoundingClientRect();
@@ -38,13 +36,15 @@ dess.style.height = paraProp.height
 mediaDiv.appendChild(iframe);
 mediaDiv.appendChild(overlaydiv);
 
+
+
 function updatePosition() {
     divProp = mediaDiv.getBoundingClientRect();
     paraProp = paragraph.getBoundingClientRect();
 
     overlaydiv.style.width = divProp.width;
     overlaydiv.style.height = divProp.height;
-    overlaydiv.style.top = divProp.top;
+
     overlaydiv.style.left = divProp.left;
     dess.style.width = divProp.width;
     dess.style.height = divProp.height;
@@ -54,6 +54,8 @@ function updatePosition() {
 
     if (window.innerWidth <= 950) {
 
+        controls.style.width = "100%"
+        overlaydiv.style.top = "8px"
         mediaDiv.style.width = "100%";
         mediaDiv.style.marginTop = "0%";
         mediaDiv.style.marginLeft = "0%";
@@ -64,6 +66,7 @@ function updatePosition() {
     }
     else if (window.innerWidth > 950) {
 
+        overlaydiv.style.top = (window.innerWidth / 100) * 3;
         mediaDiv.style.width = "55%";
         mediaDiv.style.marginTop = "3%";
         mediaDiv.style.marginLeft = "5%";
@@ -76,45 +79,3 @@ function updatePosition() {
 }
 
 setInterval(updatePosition, 1000);
-
-const scriptTag = document.createElement('script');
-scriptTag.src = 'https://www.youtube.com/iframe_api';
-document.body.appendChild(scriptTag);
-
-let player;
-
-// Initialize YouTube player after the API script is loaded
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('YTPlayer'); // Use the ID of the iframe here
-}
-
-// Load the YouTube API
-
-// Ensure the player is initialized after the script is loaded
-scriptTag.onload = function () {
-    onYouTubeIframeAPIReady();
-}
-
-const play = document.getElementById('play-pause');
-
-play.addEventListener('click', toggleImage)
-
-function toggleImage() {
-
-    play.style.opacity = 0;
-
-    setTimeout(() => {
-        if (play.src.includes('play.png')) {
-            if (player && player.pauseVideo) {
-                player.pauseVideo();
-                play.src = 'pause.png';
-            }
-        } else {
-            if (player && player.playVideo) {
-                player.playVideo();
-                play.src = 'play.png';
-            }
-        }
-        play.style.opacity = 1;
-    }, 100);
-}

@@ -3,9 +3,7 @@ body {
     background-color: rgb(28, 28, 28);
     color: white;
     user-select: none;
-    /* Disable text selection */
     caret-color: transparent;
-    /* Adjust text color for readability */
 }
 
 
@@ -44,15 +42,42 @@ body {
     margin: 0%;
 }
 
+.outer {
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 5.5%;
+    width: 54.5%;
+    justify-content: center;
+}
+
 .controls {
     display: flex;
     margin-top: 1%;
     margin-bottom: 1%;
-    margin-left: 5%;
-    width: 55%;
     justify-content: center;
 }
 
-#play-pause {
-    width: 2.3%;
+.bb {
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 3%;
+}
+
+#volume {
+    margin: 0;
+    display: flex;
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#live {
+    margin: 0;
+    display: flex;
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    order: 3;
+    visibility: hidden;
 }
