@@ -1,7 +1,3 @@
-const scriptTag = document.createElement('script');
-scriptTag.src = 'https://www.youtube.com/iframe_api';
-document.body.appendChild(scriptTag);
-
 let player;
 let duration;
 
@@ -13,20 +9,17 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-
-// scriptTag.onload = function () {
-//     onYouTubeIframeAPIReady();
-// }
-
 const play = document.getElementById('play-pause');
 const rewind = document.getElementById('back');
 const skip = document.getElementById('skip');
 const live = document.getElementById('live');
+const rangeInput = document.getElementById('vrange');
+const send = document.getElementById('send');
 
 function onPlayerReady() {
     duration = player.getDuration();
     if (duration === 0 || duration > 43500) {
-        live.style.visibility = "visible";
+        live.style.display = "flex";
     }
 }
 
@@ -106,3 +99,33 @@ function skipLive() {
         live.style.opacity = 1;
     }, 100);
 }
+
+function updateRange() {
+    const value = rangeInput.value;
+    const percentage = (value / rangeInput.max) * 100;
+    rangeInput.style.background = `linear-gradient(to right,rgb(255, 255, 255) ${percentage}%, rgba(255, 255, 255, 0.17) ${percentage}%)`;
+    if (player && player.setVolume) {
+        player.setVolume(value);
+    }
+}
+
+rangeInput.addEventListener('input', updateRange);
+
+updateRange();
+
+send.addEventListener('click', () => {
+
+    send.style.opacity = 0;
+    setTimeout(() => {
+        const currentURL = window.location.href;
+        navigator.clipboard.writeText(currentURL);
+        send.style.opacity = 1;
+    }, 100);
+
+    popup.classList.add("show");
+
+    setTimeout(() => {
+      popup.classList.remove("show");
+    }, 3000);
+
+});
