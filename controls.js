@@ -42,6 +42,14 @@ function toggleImage() {
                 player.playVideo();
                 play.src = 'pause.png';
                 temp = true
+                if (getCookie('volume') === "") {
+                    rangeInput.value = 100;
+                    updateRange();
+                }
+                else {
+                    rangeInput.value = getCookie('volume');
+                    updateRange();
+                }
             }
         }
         play.style.opacity = 1;
@@ -101,17 +109,37 @@ function skipLive() {
 }
 
 function updateRange() {
-    const value = rangeInput.value;
-    const percentage = (value / rangeInput.max) * 100;
+    value = rangeInput.value;
+    percentage = (value / rangeInput.max) * 100;
     rangeInput.style.background = `linear-gradient(to right,rgb(255, 255, 255) ${percentage}%, rgba(255, 255, 255, 0.17) ${percentage}%)`;
     if (player && player.setVolume) {
         player.setVolume(value);
+        setCookie('volume', value, 30);
+    }
+    if (value < 50) {
+        OIvolume.src = "volume.png";
+        volume.src = "volume.png";
+    }
+    if (value == 0) {
+        OIvolume.src = "mute.png";
+        volume.src = "mute.png";
+    }
+    if (value > 50) {
+        OIvolume.src = "volumefull.png";
+        volume.src = "volumefull.png";
     }
 }
 
 rangeInput.addEventListener('input', updateRange);
 
-updateRange();
+if (getCookie('volume') === "") {
+    rangeInput.value = 100;
+    updateRange();
+}
+else {
+    rangeInput.value = getCookie('volume');
+    updateRange();
+}
 
 send.addEventListener('click', () => {
 
