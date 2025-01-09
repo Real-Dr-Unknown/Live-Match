@@ -13,6 +13,8 @@ iframe.style.aspectRatio = 16 / 9;
 iframe.style.width = "100%";
 iframe.frameBorder = "0";
 iframe.style.borderRadius = "2%";
+iframe.style.marginLeft = "auto";
+iframe.style.marginRight = "auto";
 
 
 const mediaDiv = document.querySelector(".media");
@@ -94,14 +96,11 @@ function updatePosition() {
         overlaydiv.style.top = (window.innerWidth / 100) * 3;
         mediaDiv.style.width = "55%";
         mediaDiv.style.marginTop = "3%";
-        mediaDiv.style.marginLeft = "5%";
+        mediaDiv.style.marginLeft = "auto";
         dess.style.width = "53.7%";
         dess.style.marginTop = "0.5%";
-        dess.style.marginLeft = "5%";
-        title.style.marginLeft = "5.5%";
         title.style.width = "53.7%"
         outer.style.width = "54.5%";
-        outer.style.marginLeft = "5.5%";
         volume.style.display = "flex";
     }
 }
