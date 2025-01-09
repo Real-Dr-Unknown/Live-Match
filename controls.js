@@ -129,3 +129,7 @@ send.addEventListener('click', () => {
     }, 3000);
 
 });
+
+overlaydiv.addEventListener('click', () => {
+    toggleImage();
+});
