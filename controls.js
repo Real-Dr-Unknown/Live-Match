@@ -15,11 +15,13 @@ const skip = document.getElementById('skip');
 const live = document.getElementById('live');
 const rangeInput = document.getElementById('vrange');
 const send = document.getElementById('send');
+const fulls = document.getElementById('full');
 
 function onPlayerReady() {
     duration = player.getDuration();
     if (duration === 0 || duration > 43500) {
         live.style.display = "flex";
+        controls.style.width = "auto";
     }
 }
 
@@ -101,6 +103,8 @@ function skipLive() {
     setTimeout(() => {
         if (duration === 0 || duration > 43500) {
             if (player && player.seekTo) {
+                updateRange();
+                play.src = 'pause.png';
                 player.seekTo(9999999, true);
             }
         }
@@ -161,3 +165,21 @@ send.addEventListener('click', () => {
 overlaydiv.addEventListener('click', () => {
     toggleImage();
 });
+
+fulls.addEventListener('click', () => {
+
+    fulls.style.opacity = 0;
+    setTimeout(() => {
+
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
+        }
+        fulls.style.opacity = 1;
+    }, 100);
+})
