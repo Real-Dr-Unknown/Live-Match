@@ -16,7 +16,7 @@ iframe.style.borderRadius = "2%";
 iframe.style.marginLeft = "auto";
 iframe.style.marginRight = "auto";
 
-
+const cc = document.querySelector(".cc");
 const mediaDiv = document.querySelector(".media");
 const dess = document.querySelector(".descp");
 const paragraph = document.querySelector(".para");
@@ -51,7 +51,7 @@ dess.style.top = divProp.top;
 dess.style.height = paraProp.height;
 outer.style.width = divProp.width;
 
-vOverlay.style.top = outerProp.top + ((vOverlayProp.height / 2))
+vOverlay.style.top = volumeProp.top;
 vOverlay.style.left = volumeProp.left;
 
 mediaDiv.appendChild(iframe);
@@ -64,6 +64,9 @@ function updatePosition() {
     paraProp = paragraph.getBoundingClientRect();
     volumeProp = volume.getBoundingClientRect();
     OIvolumeProp = OIvolume.getBoundingClientRect();
+    
+    vOverlay.style.top = volumeProp.top;
+    vOverlay.style.left = volumeProp.left;
 
     overlaydiv.style.width = divProp.width;
     overlaydiv.style.height = divProp.height;
@@ -77,6 +80,7 @@ function updatePosition() {
     
     
     if (window.innerWidth <= 950) {
+        cc.style.width = "100%";
         controls.style.width = "100%"
         overlaydiv.style.top = "8px"
         mediaDiv.style.width = "100%";
@@ -93,14 +97,14 @@ function updatePosition() {
     }
     
     else if (window.innerWidth > 950) {
+        cc.style.width = "55%";
         overlaydiv.style.top = (window.innerWidth / 100) * 3;
-        mediaDiv.style.width = "55%";
+        mediaDiv.style.width = "100%";
         mediaDiv.style.marginTop = "3%";
-        mediaDiv.style.marginLeft = "auto";
-        dess.style.width = "53.7%";
+        dess.style.width = "100%";
         dess.style.marginTop = "0.5%";
-        title.style.width = "53.7%"
-        outer.style.width = "54.5%";
+        title.style.width = "100%"
+        outer.style.width = "100%";
         volume.style.display = "flex";
     }
 }
