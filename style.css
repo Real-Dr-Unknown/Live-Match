@@ -6,7 +6,6 @@ body {
     caret-color: transparent;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 0%;
     cursor: url('left_ptr.cur'), auto;
 }
 
