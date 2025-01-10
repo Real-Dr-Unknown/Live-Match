@@ -45,10 +45,9 @@ overlaydiv.style.height = divProp.height;
 overlaydiv.style.left = divProp.left;
 overlaydiv.style.top = divProp.top;
 dess.style.width = divProp.width;
-dess.style.height = divProp.height;
+// dess.style.height = paraProp.height;
 dess.style.left = divProp.left;
 dess.style.top = divProp.top;
-dess.style.height = paraProp.height;
 outer.style.width = divProp.width;
 vOverlay.style.top = volumeProp.top;
 
@@ -68,10 +67,8 @@ function updatePosition() {
     
     overlaydiv.style.left = divProp.left;
     dess.style.width = divProp.width;
-    dess.style.height = divProp.height;
     dess.style.left = divProp.left;
     dess.style.top = divProp.top;
-    dess.style.height = paraProp.height;
     
     
     if (window.innerWidth <= 950) {
@@ -93,7 +90,6 @@ function updatePosition() {
     
     else if (window.innerWidth > 950) {
         cc.style.width = "55%";
-        // overlaydiv.style.top = divProp.top;
         mediaDiv.style.width = "100%";
         mediaDiv.style.marginTop = "3%";
         dess.style.width = "100%";
