@@ -91,7 +91,7 @@ function updatePosition() {
     else if (window.innerWidth > 950) {
         cc.style.width = "55%";
         mediaDiv.style.width = "100%";
-        mediaDiv.style.marginTop = "3%";
+        mediaDiv.style.marginTop = "5%";
         dess.style.width = "100%";
         dess.style.marginTop = "0.5%";
         title.style.width = "100%"
