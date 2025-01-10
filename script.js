@@ -2,8 +2,6 @@ const scriptTag = document.createElement('script');
 scriptTag.src = 'https://www.youtube.com/iframe_api';
 document.body.appendChild(scriptTag);
 
-tt = false;
-
 const videoId = "RoxIuRQOplk";
 
 const iframe = document.createElement("iframe");
@@ -29,6 +27,7 @@ const volume = document.getElementById('volume');
 const OIvolume = document.getElementById('Ovolume');
 const popup = document.getElementById("popup");
 
+document.body.scrollIntoView();
 
 divProp = mediaDiv.getBoundingClientRect();
 paraProp = paragraph.getBoundingClientRect();
@@ -51,10 +50,10 @@ dess.style.left = divProp.left;
 dess.style.top = divProp.top;
 dess.style.height = paraProp.height;
 outer.style.width = divProp.width;
+vOverlay.style.top = volumeProp.top;
 
 mediaDiv.appendChild(iframe);
 mediaDiv.appendChild(overlaydiv);
-
 
 
 function updatePosition() {
@@ -68,7 +67,6 @@ function updatePosition() {
     overlaydiv.style.height = divProp.height;
     
     overlaydiv.style.left = divProp.left;
-    overlaydiv.style.top = divProp.top;
     dess.style.width = divProp.width;
     dess.style.height = divProp.height;
     dess.style.left = divProp.left;
@@ -95,7 +93,7 @@ function updatePosition() {
     
     else if (window.innerWidth > 950) {
         cc.style.width = "55%";
-        overlaydiv.style.top = divProp.top;
+        // overlaydiv.style.top = divProp.top;
         mediaDiv.style.width = "100%";
         mediaDiv.style.marginTop = "3%";
         dess.style.width = "100%";
@@ -104,10 +102,6 @@ function updatePosition() {
         outer.style.width = "100%";
         volume.style.display = "flex";
         vOverlay.style.left = volumeProp.left;
-        if (!tt && divProp.width > (window.innerWidth / 3)) {
-            vOverlay.style.top = volumeProp.top;
-            tt = true;
-        }
     }
 }
 

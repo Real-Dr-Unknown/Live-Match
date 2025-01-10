@@ -6,6 +6,7 @@ body {
     caret-color: transparent;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 0%;
 }
 .cc {
     display: flex;
@@ -20,6 +21,7 @@ body {
     border-radius: 2%;
     margin-top: 3%;
     aspect-ratio: 16/9;
+    width: 100%;
 }
 
 .title {
