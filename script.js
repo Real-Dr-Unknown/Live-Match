@@ -74,7 +74,7 @@ function updatePosition() {
     if (window.innerWidth <= 950) {
         cc.style.width = "100%";
         controls.style.width = "100%"
-        overlaydiv.style.top = "8px"
+        overlaydiv.style.top = "0px"
         mediaDiv.style.width = "100%";
         mediaDiv.style.marginTop = "0%";
         mediaDiv.style.marginLeft = "0%";
@@ -91,7 +91,7 @@ function updatePosition() {
     else if (window.innerWidth > 950) {
         cc.style.width = "55%";
         mediaDiv.style.width = "100%";
-        mediaDiv.style.marginTop = "5%";
+        mediaDiv.style.marginTop = "7%";
         dess.style.width = "100%";
         dess.style.marginTop = "0.5%";
         title.style.width = "100%"
