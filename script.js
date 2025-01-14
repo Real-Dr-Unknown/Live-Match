@@ -2,13 +2,13 @@ const scriptTag = document.createElement('script');
 scriptTag.src = 'https://www.youtube.com/iframe_api';
 document.body.appendChild(scriptTag);
 
-let uurl = new URL(window.location.href);
-let jumble_id = uurl.searchParams.get("match");
+let jumble_id = url.searchParams.get("match");
 
 if (jumble_id === null) {
-    jumble_id = "yt8nRy5yc5B";
+    jumble_id = "yt8nRy5yc5B";  // Default value if 'match' parameter is not found
 }
 
+// Function to unshift the word
 function unshiftWord(word, shiftBy) {
     let unshiftedWord = '';
 
@@ -28,7 +28,7 @@ function unshiftWord(word, shiftBy) {
     return unshiftedWord;
 }
 
-const shiftBy = 3;
+const shiftBy = 3;  // Define the shift value
 
 let videoId = unshiftWord(jumble_id, shiftBy);
 

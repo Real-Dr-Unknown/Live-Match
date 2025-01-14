@@ -1,8 +1,7 @@
 let refe;
-let url;
+let url = new URL(window.location.href);;
 
 function refrerLogs() {
-    url = new URL(window.location.href);
     refe = url.searchParams.get("referer");
     if (refe === null) {
         refe = "HoneyPie";
