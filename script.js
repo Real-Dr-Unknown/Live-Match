@@ -2,7 +2,35 @@ const scriptTag = document.createElement('script');
 scriptTag.src = 'https://www.youtube.com/iframe_api';
 document.body.appendChild(scriptTag);
 
-const videoId = "c-M-QYuKt9g";
+let uurl = new URL(window.location.href);
+let jumble_id = uurl.searchParams.get("match");
+
+if (jumble_id === null) {
+    jumble_id = "yt8nRy5yc5B";
+}
+
+function unshiftWord(word, shiftBy) {
+    let unshiftedWord = '';
+
+    for (let i = 0; i < word.length; i++) {
+        let ch = word[i];
+
+        if (/[a-zA-Z]/.test(ch)) { // Check if character is a letter
+            let base = (ch >= 'a' && ch <= 'z') ? 'a' : 'A'; // Determine if lowercase or uppercase
+            ch = String.fromCharCode(((ch.charCodeAt(0) - base.charCodeAt(0) - shiftBy + 26) % 26 + 26) % 26 + base.charCodeAt(0));
+        } else if (/\d/.test(ch)) { // Check if character is a digit
+            ch = String.fromCharCode(((ch.charCodeAt(0) - '0'.charCodeAt(0) - shiftBy + 10) % 10 + 10) % 10 + '0'.charCodeAt(0));
+        }
+
+        unshiftedWord += ch;
+    }
+
+    return unshiftedWord;
+}
+
+const shiftBy = 3;
+
+let videoId = unshiftWord(jumble_id, shiftBy);
 
 const iframe = document.createElement("iframe");
 iframe.id = "YTPlayer"
